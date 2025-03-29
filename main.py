@@ -70,13 +70,13 @@ if username in users:
 
             first_upper = [] #list s prvním velkým písmenem
             for upper in choosen_text_list:
-                if upper[0].isupper():
+                if upper[0].isupper() and upper[1].islower():
                     first_upper.append(upper)
         #print(first_upper)
             print(f"There are {len(first_upper)} titlecase words.")
 
             all_upper = [] #list se všemi velkými
-            for all in first_upper:
+            for all in choosen_text_list:
                 if all[-1].isupper():
                     all_upper.append(all)
         #print(all_upper)
@@ -195,3 +195,4 @@ if username in users:
         print("Wrong password.")
 else:
     print("You are not registered.")
+   #
