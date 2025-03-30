@@ -31,6 +31,8 @@ TEXTS = [
     in modern oceans. Other fish such as paddlefish,
     garpike and stingray are also present.'''
 ]
+
+
 users = ["bob", "ann", "mike", "liz"]
 passwords = ["123", "pass123", "password123", "pass123"]
 
@@ -42,9 +44,9 @@ if username in users:
     if user_password not in passwords:
         print("Wrong password.")
     
-    elif users.index(username) == passwords.index(user_password) or username == "liz" and user_password == "pass123":
+    elif users.index(username) == passwords.index(
+        user_password) or username == "liz" and user_password == "pass123":
         print(f"Welcome to the app, {username}")
-
 
         print("We have 3 texts to be analyzed.")
         print("-" * 40)
@@ -62,24 +64,24 @@ if username in users:
             one_line = one_line.replace("    "," ")
             one_line_clear = one_line.replace(".","")
             one_line_clear = one_line_clear.replace(",","")
-            one_line_clear = one_line_clear.replace("-"," ") #kvůli slova buff-to-white v 2.textu
+            one_line_clear = one_line_clear.replace("-"," ")
             choosen_text_list = one_line_clear.split(" ")
-        #print(choosen_text_list)
-        #print(len(choosen_text_list))
+
             print(f"There are {len(choosen_text_list)} words in the selected text.")
 
-            first_upper = [] #list s prvním velkým písmenem
+
+            first_upper = [] 
             for upper in choosen_text_list:
                 if upper[0].isupper() and upper[1].islower():
                     first_upper.append(upper)
-        #print(first_upper)
+
             print(f"There are {len(first_upper)} titlecase words.")
 
-            all_upper = [] #list se všemi velkými
+            all_upper = [] 
             for all in choosen_text_list:
                 if all[-1].isupper():
                     all_upper.append(all)
-        #print(all_upper)
+
             print(f"There are {len(all_upper)} uppercase words.")
 
             numbers = []
@@ -87,9 +89,8 @@ if username in users:
                 if num.isdigit():
                     numbers.append(num)
 
-            #print(numbers)
             smaller = len(choosen_text_list) - len(first_upper) - len(all_upper) - len(numbers)
-            #print(smaller)
+
             print(f"There are {smaller} lowercase words.")
             print(f"There are {len(numbers)} numeric strings.")
 
@@ -97,14 +98,12 @@ if username in users:
             for nr in range(0,len(numbers)):
                 numbers_int.append(int(numbers[nr]))
 
-            #print(numbers_int)
 
             suma = sum(numbers_int)
             print(f"The sum of all the numbers is {suma}.")
             print("-" * 40)
             print("LEN|    OCCURENCES    |NR.")
 
-        #graf četnosti délky písmen
 
             lenght_1 = []
             for x1 in choosen_text_list:
@@ -195,4 +194,4 @@ if username in users:
         print("Wrong password.")
 else:
     print("You are not registered.")
-   #
+ 
