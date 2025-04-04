@@ -37,19 +37,26 @@ TEXTS = [
 #passwords = ["123", "pass123", "password123", "pass123"]
 registered = {"bob": "123", "ann": "pass123",
                "mike": "password123", "liz": "pass123"}
+
 username = input("username: ")
+
+if username not in registered:
+    print("Wrong user name.") 
+    quit()
+
 user_password = input("password: ")
 print("-" * 40)
 
 
 if registered.get(username) == user_password:
-    print(f"Welcome to the app, {username}")
+    print(f"Welcome to the app, {username}.")
 
     print("We have 3 texts to be analyzed.")
     print("-" * 40)
     text_numbers = ["1", "2", "3"]
     choosen_number = (input("Enter a number btw. 1 and 3 to select: "))
     print("-" * 40)
+    
     if choosen_number not in text_numbers:
         print("You are out of range or you didn´t write a number.")
     else:
@@ -105,93 +112,32 @@ if registered.get(username) == user_password:
         print("-" * 40)
         print("LEN|    OCCURENCES    |NR.")
 
+# úprava¨
+        lenght_words = {}
+        for word in choosen_text_list:
+            lenght = len(word)
+            if lenght in lenght_words:
+                lenght_words[lenght] += 1
+            else:
+                lenght_words[lenght] = 1
 
-        lenght_1 = []
-        for x1 in choosen_text_list:
-            if len(x1) == 1:
-                lenght_1.append(x1)
+        #print(lenght_words)
 
-        lenght_2 = []
-        for x2 in choosen_text_list:
-            if len(x2) == 2:
-                lenght_2.append(x2)
-            
-        lenght_3 = []
-        for x3 in choosen_text_list:
-            if len(x3) == 3:
-                lenght_3.append(x3)
-            
-        lenght_4 = []
-        for x4 in choosen_text_list:
-            if len(x4) == 4:
-                lenght_4.append(x4)
-            
-        lenght_5 = []
-        for x5 in choosen_text_list:
-            if len(x5) == 5:
-                lenght_5.append(x5)
-            
-        lenght_6 = []
-        for x6 in choosen_text_list:
-            if len(x6) == 6:
-                lenght_6.append(x6)
+        lenght_sorted = sorted(lenght_words.items())
+        #print(lenght_sorted)
 
-        lenght_7 = []
-        for x7 in choosen_text_list:
-            if len(x7) == 7:
-                lenght_7.append(x7)
+        for graf in range(0,len(lenght_sorted)):
+            if lenght_sorted[graf][0] < 10:
+                print(
+                    f" {lenght_sorted[graf][0]}|{lenght_sorted[graf][1] * '*'}{(17 - lenght_sorted[graf][1]) * ' '}|{lenght_sorted[graf][1]}")
+            else:
+                print(
+                    f"{lenght_sorted[graf][0]}|{lenght_sorted[graf][1] * '*'}{(17 - lenght_sorted[graf][1]) * ' '}|{lenght_sorted[graf][1]}")    
 
-        lenght_8 = []
-        for x8 in choosen_text_list:
-            if len(x8) == 8:
-                lenght_8.append(x8)
-
-        lenght_9 = []
-        for x9 in choosen_text_list:
-            if len(x9) == 9:
-                lenght_9.append(x9)
-        
-        lenght_10 = []
-        for x10 in choosen_text_list:
-            if len(x10) == 10:
-                lenght_10.append(x10)
-                
-        lenght_11 = []
-        for x11 in choosen_text_list:
-            if len(x11) == 11:
-                lenght_11.append(x11)
-            
-        lenght_12 = []
-        for x12 in choosen_text_list:
-            if len(x12) == 12:
-                lenght_12.append(x12)
 
         print("-" * 40)
-        if len(lenght_1) != 0:
-            print(f" 1| {len(lenght_1) * '*'} {(17 - len(lenght_1)) * " "}|{len(lenght_1)}")
-        if len(lenght_2) != 0:
-            print(f" 2| {len(lenght_2) * '*'} {(17 - len(lenght_2)) * " "}|{len(lenght_2)}")
-        if len(lenght_3) != 0:
-            print(f" 3| {len(lenght_3) * '*'} {(17 - len(lenght_3)) * " "}|{len(lenght_3)}")
-        if len(lenght_4) != 0:
-            print(f" 4| {len(lenght_4) * '*'} {(17 - len(lenght_4)) * " "}|{len(lenght_4)}")
-        if len(lenght_5) != 0:
-            print(f" 5| {len(lenght_5) * '*'} {(17 - len(lenght_5)) * " "}|{len(lenght_5)}")
-        if len(lenght_6) != 0:
-            print(f" 6| {len(lenght_6) * '*'} {(17 - len(lenght_6)) * " "}|{len(lenght_6)}")
-        if len(lenght_7) != 0:
-            print(f" 7| {len(lenght_7) * '*'} {(17 - len(lenght_7)) * " "}|{len(lenght_7)}")
-        if len(lenght_8) != 0:
-            print(f" 8| {len(lenght_8) * '*'} {(17 - len(lenght_8)) * " "}|{len(lenght_8)}")
-        if len(lenght_9) != 0:
-            print(f" 9| {len(lenght_9) * '*'} {(17 - len(lenght_9)) * " "}|{len(lenght_9)}")
-        if len(lenght_10) != 0:
-            print(f"10| {len(lenght_10) * '*'} {(17 - len(lenght_10)) * " "}|{len(lenght_10)}")
-        if len(lenght_11) != 0:
-            print(f"11| {len(lenght_11) * '*'} {(17 - len(lenght_11)) * " "}|{len(lenght_11)}")
-        if len(lenght_12) != 0:
-            print(f"12| {len(lenght_12) * '*'} {(17 - len(lenght_12)) * " "}|{len(lenght_12)}")
-   
+
+  
 else:
     print("You are not registered.")
  
