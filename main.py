@@ -111,6 +111,7 @@ if registered.get(username) == user_password:
         print(f"The sum of all the numbers is {suma}.")
         print("-" * 40)
         print("LEN|    OCCURENCES    |NR.")
+        print("-" * 40)
 
 # úprava¨
         lenght_words = {}
@@ -129,10 +130,10 @@ if registered.get(username) == user_password:
         for graf in range(0,len(lenght_sorted)):
             if lenght_sorted[graf][0] < 10:
                 print(
-                    f" {lenght_sorted[graf][0]}|{lenght_sorted[graf][1] * '*'}{(17 - lenght_sorted[graf][1]) * ' '}|{lenght_sorted[graf][1]}")
+                    f"  {lenght_sorted[graf][0]}|{lenght_sorted[graf][1] * '*'}{(18 - lenght_sorted[graf][1]) * ' '}|{lenght_sorted[graf][1]}")
             else:
                 print(
-                    f"{lenght_sorted[graf][0]}|{lenght_sorted[graf][1] * '*'}{(17 - lenght_sorted[graf][1]) * ' '}|{lenght_sorted[graf][1]}")    
+                    f" {lenght_sorted[graf][0]}|{lenght_sorted[graf][1] * '*'}{(18 - lenght_sorted[graf][1]) * ' '}|{lenght_sorted[graf][1]}")    
 
 
         print("-" * 40)
