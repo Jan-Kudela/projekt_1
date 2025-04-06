@@ -34,8 +34,12 @@ TEXTS = [
 ]
 
 
-registered = {"bob": "123", "ann": "pass123",
-              "mike": "password123", "liz": "pass123"}
+registered = {
+    "bob": "123", 
+    "ann": "pass123",
+    "mike": "password123",
+    "liz": "pass123"
+}
 
 username = input("username: ")
 
