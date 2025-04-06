@@ -4,6 +4,7 @@ projekt_1.py: první projekt do Engeto Online Python Akademie
 author: Jan Kuděla
 email: jochanan.jorgenr@gmail.com
 """
+
 TEXTS = [
     '''Situated about 10 miles west of Kemmerer,
     Fossil Butte is a ruggedly impressive
@@ -33,8 +34,6 @@ TEXTS = [
 ]
 
 
-#users = ["bob", "ann", "mike", "liz"]
-#passwords = ["123", "pass123", "password123", "pass123"]
 registered = {"bob": "123", "ann": "pass123",
               "mike": "password123", "liz": "pass123"}
 
@@ -58,7 +57,8 @@ if registered.get(username) == user_password:
     print("-" * 40)
     
     if choosen_number not in text_numbers:
-        print(f"You are out of range or you didn´t write a number. "
+        print(
+            f"You are out of range or you didn´t write a number. "
             f"Terminating the program"
         )
     else:
@@ -97,7 +97,7 @@ if registered.get(username) == user_password:
                 numbers.append(num)
 
         smaller = len(choosen_text_list) - len(
-            first_upper) - len(all_upper) - len(numbers)
+                    first_upper) - len(all_upper) - len(numbers)
         print(f"There are {smaller} lowercase words.")
         print(f"There are {len(numbers)} numeric strings.")
 
@@ -131,7 +131,6 @@ if registered.get(username) == user_password:
                     f"{(18 - lenght_sorted[graf][1]) * ' '}|"
                     f"{lenght_sorted[graf][1]}"
                 )
-
             else:
                 print(
                     f" {lenght_sorted[graf][0]}|"
@@ -139,7 +138,7 @@ if registered.get(username) == user_password:
                     f"{(18 - lenght_sorted[graf][1]) * ' '}|"
                     f"{lenght_sorted[graf][1]}"
                 )    
-
+        
         print("-" * 40)
 
 else:
