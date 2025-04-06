@@ -65,6 +65,7 @@ if registered.get(username) == user_password:
             f"You are out of range or you didn´t write a number. "
             f"Terminating the program"
         )
+        
     else:
         choosen_number = int(choosen_number)
 
