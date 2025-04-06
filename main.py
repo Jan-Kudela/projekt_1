@@ -36,12 +36,12 @@ TEXTS = [
 #users = ["bob", "ann", "mike", "liz"]
 #passwords = ["123", "pass123", "password123", "pass123"]
 registered = {"bob": "123", "ann": "pass123",
-               "mike": "password123", "liz": "pass123"}
+              "mike": "password123", "liz": "pass123"}
 
 username = input("username: ")
 
 if username not in registered:
-    print("Wrong user name.") 
+    print("Wrong user name, terminating the program.") 
     quit()
 
 user_password = input("password: ")
@@ -49,16 +49,18 @@ print("-" * 40)
 
 
 if registered.get(username) == user_password:
-    print(f"Welcome to the app, {username}.")
+    print(f"Welcome to the app, {username.title()}.")
 
     print("We have 3 texts to be analyzed.")
     print("-" * 40)
     text_numbers = ["1", "2", "3"]
-    choosen_number = (input("Enter a number btw. 1 and 3 to select: "))
+    choosen_number = input("Enter a number btw. 1 and 3 to select: ")
     print("-" * 40)
     
     if choosen_number not in text_numbers:
-        print("You are out of range or you didn´t write a number.")
+        print(f"You are out of range or you didn´t write a number. "
+            f"Terminating the program"
+        )
     else:
         choosen_number = int(choosen_number)
 
@@ -72,24 +74,22 @@ if registered.get(username) == user_password:
         choosen_text_list = one_line_clear.split(" ")
 
         print(
-            f"There are {len(choosen_text_list)} words in the selected text.")
+            f"There are {len(choosen_text_list)} "
+            f"words in the selected text."
+        )
 
 
         first_upper = [] 
         for upper in choosen_text_list:
             if upper[0].isupper() and upper[1].islower():
                 first_upper.append(upper)
-
         print(f"There are {len(first_upper)} titlecase words.")
-
 
         all_upper = [] 
         for all in choosen_text_list:
             if all[-1].isupper():
                 all_upper.append(all)
-
         print(f"There are {len(all_upper)} uppercase words.")
-
 
         numbers = []
         for num in choosen_text_list:
@@ -98,7 +98,6 @@ if registered.get(username) == user_password:
 
         smaller = len(choosen_text_list) - len(
             first_upper) - len(all_upper) - len(numbers)
-
         print(f"There are {smaller} lowercase words.")
         print(f"There are {len(numbers)} numeric strings.")
 
@@ -113,7 +112,7 @@ if registered.get(username) == user_password:
         print("LEN|    OCCURENCES    |NR.")
         print("-" * 40)
 
-# úprava¨
+
         lenght_words = {}
         for word in choosen_text_list:
             lenght = len(word)
@@ -122,23 +121,27 @@ if registered.get(username) == user_password:
             else:
                 lenght_words[lenght] = 1
 
-        #print(lenght_words)
-
+        
         lenght_sorted = sorted(lenght_words.items())
-        #print(lenght_sorted)
-
         for graf in range(0,len(lenght_sorted)):
             if lenght_sorted[graf][0] < 10:
                 print(
-                    f"  {lenght_sorted[graf][0]}|{lenght_sorted[graf][1] * '*'}{(18 - lenght_sorted[graf][1]) * ' '}|{lenght_sorted[graf][1]}")
+                    f"  {lenght_sorted[graf][0]}|"
+                    f"{lenght_sorted[graf][1] * '*'}"
+                    f"{(18 - lenght_sorted[graf][1]) * ' '}|"
+                    f"{lenght_sorted[graf][1]}"
+                )
+
             else:
                 print(
-                    f" {lenght_sorted[graf][0]}|{lenght_sorted[graf][1] * '*'}{(18 - lenght_sorted[graf][1]) * ' '}|{lenght_sorted[graf][1]}")    
-
+                    f" {lenght_sorted[graf][0]}|"
+                    f"{lenght_sorted[graf][1] * '*'}"
+                    f"{(18 - lenght_sorted[graf][1]) * ' '}|"
+                    f"{lenght_sorted[graf][1]}"
+                )    
 
         print("-" * 40)
 
-  
 else:
-    print("You are not registered.")
+    print("You are not registered, terminating the program.")
  
