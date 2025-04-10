@@ -56,65 +56,67 @@ if registered.get(username) == user_password:
 
     print(f"We have {len(TEXTS)} texts to be analyzed.")
     print("-" * 40)
-    text_numbers = range(1,len(TEXTS))
-    choosen_number = int(
+    text_numbers = range(1,len(TEXTS)+1)
+    choosen_number = (
         input(f"Enter a number btw. 1 and {len(TEXTS)} to select: ")
     )
     print("-" * 40)
-    
-    if choosen_number not in text_numbers:
-        print(
-            f"You are out of range or you didn´t write a number. "
-            f"Terminating the program"
-        )
-        
+
+    if choosen_number.isdigit() is False:
+        print("You do not enter a number.\nTerminating Program.")
+        quit()
     else:
         choosen_number = int(choosen_number)
+        if choosen_number not in text_numbers:
+            print(
+                f"You are out of range 1 to {len(TEXTS)}. "
+                f"Terminating the program."
+            )
+            quit()
+        else:
+            choosen_text = TEXTS[choosen_number - 1]
 
-        choosen_text = TEXTS[choosen_number - 1]
+            one_line = choosen_text.replace(
+                "\n","" ).replace("    "," ").replace(".","").replace(
+                ",","").replace("-"," "
+            )
 
-        one_line = choosen_text.replace("\n","" )
-        one_line = one_line.replace("    "," ")
-        one_line_clear = one_line.replace(".","")
-        one_line_clear = one_line_clear.replace(",","")
-        one_line_clear = one_line_clear.replace("-"," ")
-        choosen_text_list = one_line_clear.split(" ")
-
-        print(
-            f"There are {len(choosen_text_list)} "
-            f"words in the selected text."
-        )
+            choosen_text_list = one_line.split(" ")
+         
+            print(
+                f"There are {len(choosen_text_list)} "
+                f"words in the selected text."
+            )
 
 
-        first_upper = [] 
-        for upper in choosen_text_list:
-            if upper[0].isupper() and upper[1].islower():
-                first_upper.append(upper)
-        print(f"There are {len(first_upper)} titlecase words.")
-
-        all_upper = [] 
-        for all in choosen_text_list:
-            if all[-1].isupper():
-                all_upper.append(all)
-        print(f"There are {len(all_upper)} uppercase words.")
-
+        title = []
+        upper = []
+        lower = []
         numbers = []
-        for num in choosen_text_list:
-            if num.isdigit():
-                numbers.append(num)
-
-        smaller = len(choosen_text_list) - len(
-                    first_upper) - len(all_upper) - len(numbers)
-        print(f"There are {smaller} lowercase words.")
+        
+        for word in choosen_text_list:
+            if word.istitle():
+                title.append(word)
+            elif word.isupper():  
+                upper.append(word)  
+            elif word.islower():  
+                lower.append(word)   
+            else:   
+                numbers.append(word)
+                
+        print(f"There are {len(title)} titlecase words.")
+        print(f"There are {len(upper)} titlecase words.")
+        print(f"There are {len(lower)} lowercase words.")
         print(f"There are {len(numbers)} numeric strings.")
 
+        
         numbers_int = []
         for nr in range(0,len(numbers)):
             numbers_int.append(int(numbers[nr]))
 
-
         suma = sum(numbers_int)
         print(f"The sum of all the numbers is {suma}.")
+        
         print("-" * 40)
         print("LEN|    OCCURENCES    |NR.")
         print("-" * 40)
