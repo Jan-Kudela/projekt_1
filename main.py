@@ -54,10 +54,12 @@ print("-" * 40)
 if registered.get(username) == user_password:
     print(f"Welcome to the app, {username.title()}.")
 
-    print("We have 3 texts to be analyzed.")
+    print(f"We have {len(TEXTS)} texts to be analyzed.")
     print("-" * 40)
-    text_numbers = ["1", "2", "3"]
-    choosen_number = input("Enter a number btw. 1 and 3 to select: ")
+    text_numbers = range(1,len(TEXTS))
+    choosen_number = int(
+        input(f"Enter a number btw. 1 and {len(TEXTS)} to select: ")
+    )
     print("-" * 40)
     
     if choosen_number not in text_numbers:
