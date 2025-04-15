@@ -41,6 +41,7 @@ registered = {
     "liz": "pass123"
 }
 
+separator = "-" * 40
 username = input("username: ")
 
 if username not in registered:
@@ -48,19 +49,19 @@ if username not in registered:
     quit()
 
 user_password = input("password: ")
-print("-" * 40)
+print(separator)
 
 
 if registered.get(username) == user_password:
     print(f"Welcome to the app, {username.title()}.")
 
     print(f"We have {len(TEXTS)} texts to be analyzed.")
-    print("-" * 40)
+    print(separator)
     text_numbers = range(1,len(TEXTS)+1)
     choosen_number = (
         input(f"Enter a number btw. 1 and {len(TEXTS)} to select: ")
     )
-    print("-" * 40)
+    print(separator)
 
     if choosen_number.isdigit() is False:
         print("You do not enter a number.\nTerminating Program.")
@@ -117,9 +118,9 @@ if registered.get(username) == user_password:
         suma = sum(numbers_int)
         print(f"The sum of all the numbers is {suma}.")
         
-        print("-" * 40)
+        print(separator)
         print("LEN|    OCCURENCES    |NR.")
-        print("-" * 40)
+        print(separator)
 
 
         lenght_words = {}
@@ -148,7 +149,7 @@ if registered.get(username) == user_password:
                     f"{lenght_sorted[graf][1]}"
                 )    
         
-        print("-" * 40)
+        print(separator)
 
 else:
     print("You are not registered, terminating the program.")
