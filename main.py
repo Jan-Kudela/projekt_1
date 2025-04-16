@@ -106,7 +106,7 @@ if registered.get(username) == user_password:
                 numbers.append(word)
                 
         print(f"There are {len(title)} titlecase words.")
-        print(f"There are {len(upper)} titlecase words.")
+        print(f"There are {len(upper)} uppercase words.")
         print(f"There are {len(lower)} lowercase words.")
         print(f"There are {len(numbers)} numeric strings.")
 
@@ -133,6 +133,7 @@ if registered.get(username) == user_password:
 
         
         lenght_sorted = sorted(lenght_words.items())
+        
         for graf in range(0,len(lenght_sorted)):
             if lenght_sorted[graf][0] < 10:
                 print(
