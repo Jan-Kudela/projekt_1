@@ -42,6 +42,7 @@ registered = {
 }
 
 separator = "-" * 40
+
 username = input("username: ")
 
 if username not in registered:
@@ -77,15 +78,15 @@ if registered.get(username) == user_password:
         else:
             choosen_text = TEXTS[choosen_number - 1]
 
-            one_line = choosen_text.replace(
-                "\n","" ).replace("    "," ").replace(".","").replace(
-                ",","").replace("-"," "
-            )
+            splited_text = choosen_text.split()
 
-            choosen_text_list = one_line.split(" ")
+            splited_text_clear = []
+            for slovo in splited_text:
+                slovo_clear = slovo.strip(".,:!?()[]")
+                splited_text_clear.append(slovo_clear)
          
             print(
-                f"There are {len(choosen_text_list)} "
+                f"There are {len(splited_text_clear)} "
                 f"words in the selected text."
             )
 
@@ -95,7 +96,7 @@ if registered.get(username) == user_password:
         lower = []
         numbers = []
         
-        for word in choosen_text_list:
+        for word in splited_text_clear:
             if word.istitle():
                 title.append(word)
             elif word.isupper():  
@@ -124,7 +125,7 @@ if registered.get(username) == user_password:
 
 
         lenght_words = {}
-        for word in choosen_text_list:
+        for word in splited_text_clear:
             lenght = len(word)
             if lenght in lenght_words:
                 lenght_words[lenght] += 1
@@ -134,21 +135,11 @@ if registered.get(username) == user_password:
         
         lenght_sorted = sorted(lenght_words.items())
         
-        for graf in range(0,len(lenght_sorted)):
-            if lenght_sorted[graf][0] < 10:
-                print(
-                    f"  {lenght_sorted[graf][0]}|"
-                    f"{lenght_sorted[graf][1] * '*'}"
-                    f"{(18 - lenght_sorted[graf][1]) * ' '}|"
-                    f"{lenght_sorted[graf][1]}"
-                )
-            else:
-                print(
-                    f" {lenght_sorted[graf][0]}|"
-                    f"{lenght_sorted[graf][1] * '*'}"
-                    f"{(18 - lenght_sorted[graf][1]) * ' '}|"
-                    f"{lenght_sorted[graf][1]}"
-                )    
+        for value, count in lenght_sorted:
+            value_left = f"{value:2}"
+            stars = "*" * count
+            spaces = " " * (18 - count)
+            print(f" {value_left}|{stars}{spaces}|{count}")
         
         print(separator)
 
